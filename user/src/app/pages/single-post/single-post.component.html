@@ -7,7 +7,7 @@
           <small class="bg-light text-danger text-center">{{
             postData.category.category
           }}</small>
-          <small class="bg-light text-sucess text-center ml-2">Featured</small>
+          <small class="bg-light text-sucess text-center ml-2" *ngIf= "postData.isFeatured">Featured</small>
           <small class="bg-light text-info text-center ml-2"
             >Views- {{ postData.views }}</small
           >

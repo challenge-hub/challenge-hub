@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, getDocs, query, where, Firestore, limit, doc, docData} from '@angular/fire/firestore';
+import { collection, getDocs, query, where, Firestore, limit, doc, docData, updateDoc, increment} from '@angular/fire/firestore';
 import { ref } from '@angular/fire/storage';
 import { orderBy } from 'firebase/firestore';
 import { Observable } from 'rxjs';
@@ -94,5 +94,18 @@ return new Observable<any[]>((observer) => {
           observer.error(error);
         });
     });
+  }
+
+async countViews(postId: string): Promise<void> {
+    const postRef = doc(this.afs, `posts/${postId}`);
+    await updateDoc(postRef, {
+      views: increment(1),
+    })
+      .then(() => {
+        console.log('Views Count Updated');
+      })
+      .catch((error) => {
+        console.error('Error updating views:', error);
+      });
   }
 }
