@@ -1,32 +1,31 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-9">
-            <div class="card shadow-effect">
-                <img src="https://cdn.pixabay.com/photo/2022/09/03/13/00/bench-7429540_640.jpg" alt="" class="card-img fluid">
-                <div class="card-body">
-                     <small class="bg-light text-danger text-center">Technology</small>
-                     <small class="bg-light text-sucess text-center ml-2">Featured</small>
-                     <small class="bg-light text-info text-center ml-2">Views-182,392</small>
-                     <small class="bg-light text-warning text-center ml-2">LAST UPDATED - SEP 2, 2021</small>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card shadow-effect">
+        <img [src]="postData.postImgPath" alt="" class="card-img fluid" />
+        <div class="card-body">
+          <small class="bg-light text-danger text-center">{{
+            postData.category.category
+          }}</small>
+          <small class="bg-light text-sucess text-center ml-2" *ngIf= "postData.isFeatured">Featured</small>
+          <small class="bg-light text-info text-center ml-2"
+            >Views- {{ postData.views }}</small
+          >
+          <small class="bg-light text-warning text-center ml-2"
+            >LAST UPDATED - {{ postData.createdAt.toMillis() | date }}</small
+          >
 
-                     <h1 class="mt-3 mb-3">Technology Competition 1.0</h1>
-                     <p>This is a dummy text.
-                        1111111111111111111111111111111111111111111111111111111111111111
-                        1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
-                        11111111111111111111111111111111111111111111111111111333333333333333333333333333333333333333333
-                        4444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444
-                        66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
-                     </p>
-                </div>
-            </div>
-            <app-comment-form></app-comment-form>
-            <app-comment-list></app-comment-list>
+          <h1 class="mt-3 mb-3">{{ postData.title }}</h1>
+          <p [innerHTML]="postData.content">{{ postData.content }}</p>
         </div>
-        <div class="col-md-3">
-            <app-post-card></app-post-card>
-            <app-post-card></app-post-card>
-            <app-post-card></app-post-card>
-        </div>
-        
+      </div>
+      <app-comment-form></app-comment-form>
+      <app-comment-list></app-comment-list>
     </div>
+    <div class="col-md-3">
+      <div *ngFor="let similarpost of similarPostArray">
+        <app-post-card [postData]="similarpost"></app-post-card>
+      </div>
+    </div>
+  </div>
 </div>
