@@ -1,18 +1,54 @@
 <div class="card">
-    <div class="card-body text-center">
-      <div class="mt-3 mb-5">
-        <h3>SUBSCRIPTION FORM</h3>
-        <p class="m-auto subs-text">This is a Dummy text</p>
-        <form action="" class="d-flex justify-content-center mb-5 mt-5">
-          <div class="form-group w-50">
-            <input type="text" class="form-control shadow-effect" placeholder="Your Name">
-          </div>
-          <div class="form-group w-50 mx-2">
-            <input type="email" class="form-control shadow-effect" placeholder="Email Address">
-          </div>
-          <button class="btn btn-info btn-block btn-theme">SUBSCRIBE</button>
-        </form>
+  <div class="card-body text-center">
+    <div class="mt-3 mb-5">
+      <h3>SUBSCRIPTION FORM</h3>
+      <p class="m-auto subs-text">Subscribe to get the latest challenges and updates.</p>
+      <div class="alert alert-danger mt-3" *ngIf="isEmailError">
+        Email is Already in use.
       </div>
+      <div class="alert alert-info mt-3" *ngIf="isSubscribed">
+        Thank You for subscribing to our Challenge hub. Stay tuned for Awesome Challenge posts ...!
+      </div>
+      <form
+        action=""
+        class="d-flex justify-content-center mb-5 mt-5"
+        #subForm="ngForm"
+        (ngSubmit)="onSubmit(subForm.value)"
+      >
+        <div class="form-group w-50">
+          <input
+            type="text"
+            class="form-control "
+            placeholder="Your Name"
+            name="name"
+            #Name="ngModel"
+            ngModel
+            required
+            [ngClass]= "{'is-invalid': Name.touched && Name.invalid}"
+          />
+           <div class="text-danger" *ngIf= "Name.touched && Name.invalid">
+            <div *ngIf= "Name.errors?.['required']" >Name is Required.</div>
+          </div>
+        </div>
+        <div class="form-group w-50 mx-2">
+          <input
+            type="email"
+            class="form-control "
+            placeholder="Email Address"
+            name="email"
+            #Email="ngModel"
+            ngModel
+            required
+            email
+            [ngClass]= "{'is-invalid': Email.touched && Email.invalid}"
+          />
+         <div class="text-danger" *ngIf= "Email.touched && Email.invalid">
+            <div *ngIf= "Email.errors?.['required']" >Email is Required.</div>
+            <div *ngIf= "Email.errors?.['email']" >Please Enter a valid Email address.</div>
+          </div>
+        </div>
+        <button class="btn btn-info btn-block btn-theme" [disabled]="subForm.invalid">SUBSCRIBE</button>
+      </form>
     </div>
   </div>
-  
+</div>

@@ -2,25 +2,25 @@
   <div class="row">
     <div class="col-md-9">
       <div class="card shadow-effect">
-        <img [src]="postData.postImgPath" alt="" class="card-img fluid" />
+        <img [src]="postData?.postImgPath" alt="" class="card-img fluid" />
         <div class="card-body">
           <small class="bg-light text-danger text-center">{{
-            postData.category.category
+            postData?.category.category
           }}</small>
-          <small class="bg-light text-sucess text-center ml-2" *ngIf= "postData.isFeatured">Featured</small>
+          <small class="bg-light text-sucess text-center ml-2" *ngIf= "postData?.isFeatured">Featured</small>
           <small class="bg-light text-info text-center ml-2"
-            >Views- {{ postData.views }}</small
+            >Views- {{ postData?.views }}</small
           >
           <small class="bg-light text-warning text-center ml-2"
-            >LAST UPDATED - {{ postData.createdAt.toMillis() | date }}</small
+            >LAST UPDATED - {{ postData?.createdAt.toMillis() | date }}</small
           >
 
-          <h1 class="mt-3 mb-3">{{ postData.title }}</h1>
-          <p [innerHTML]="postData.content">{{ postData.content }}</p>
+          <h1 class="mt-3 mb-3">{{ postData?.title }}</h1>
+          <p [innerHTML]="postData?.content">{{ postData?.content }}</p>
         </div>
       </div>
-      <app-comment-form></app-comment-form>
-      <app-comment-list></app-comment-list>
+      <!-- <app-comment-form></app-comment-form>
+      <app-comment-list></app-comment-list> -->
     </div>
     <div class="col-md-3">
       <div *ngFor="let similarpost of similarPostArray">
