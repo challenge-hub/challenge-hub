@@ -1,10 +1,10 @@
 import { Component, Input , OnInit} from '@angular/core';
-import { DatePipe, NgIf } from "../../../../node_modules/@angular/common";
+import { CommonModule, DatePipe, NgIf } from "@angular/common";
 
 @Component({
   selector: 'app-post-card',
   standalone: true,
-  imports: [NgIf, DatePipe],
+  imports: [NgIf, DatePipe, CommonModule],
   templateUrl: './post-card.component.html',
   styleUrl: './post-card.component.css'
 })

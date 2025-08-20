@@ -50,4 +50,24 @@ export class PostsService {
         });
     });
   }
+
+  loadCategoryPosts(categoryId: string): Observable<any[]> {
+    return new Observable<any[]>((observer) => {
+      const postsRef = collection(this.afs, 'posts');
+      const q = query(postsRef, where('category.categoryId', '==', categoryId), limit(4));
+
+      getDocs(q)
+        .then((querySnapshot) => {
+          const data: any[] = [];
+          querySnapshot.forEach((doc) => {
+            data.push({ id: doc.id, ...doc.data() });
+          });
+          observer.next(data);
+          observer.complete();
+        })
+        .catch((error) => {
+          observer.error(error);
+        });
+    });
+  }
 }
