@@ -14,9 +14,10 @@ import { CommonModule } from '@angular/common';
 export class SingleCategoryComponent {
   postArray: Array<any> = [];
   categoryObj: any = {};
+
   constructor(
     private route: ActivatedRoute,
-    private postService: PostsService
+    private postService: PostsService,
   ) {}
 
   ngOnInit(): void {
