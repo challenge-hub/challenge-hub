@@ -3,22 +3,13 @@
         <div class="row">
             <div class="col-md-12 text-center mt-5">
                 <h2 class="text-white"> Featured Posts</h2>
-                <p class="text-white">This is a dummy text</p>
+                <p class="text-white">Hand-picked highlights of the most exciting challenges, competitions, and updates you shouldn’t miss.</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-lg-3">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-lg-3">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-lg-3">
-                <app-post-card></app-post-card>
-            </div>
+            <div class="col-md-4 mt-3" *ngFor= "let featuredPost of featuredPostsArray">
+            <app-post-card [postData] = "featuredPost"></app-post-card>
+        </div>
         </div>
     </div>
 </section>
@@ -26,27 +17,12 @@
 <section class="container mt-5">
     <div class="col-md-12 text-center">
         <h2>Latest Posts</h2>
-        <p> This is a Dummy text</p>
+        <p> Stay updated with the newest challenges, announcements, and community activities added to the hub.</p>
     </div>
     <div class="row">
-        <div class="col-md-4 mt-3">
-            <app-post-card></app-post-card>
+        <div class="col-md-4 mt-3" *ngFor= "let latestPost of latestPostsArray">
+            <app-post-card [postData] = "latestPost"></app-post-card>
         </div>
-        <div class="col-md-4 mt-3">
-            <app-post-card></app-post-card>
-        </div>
-        <div class="col-md-4 mt-3">
-            <app-post-card></app-post-card>
-        </div>
-        <div class="col-md-4 mt-3">
-            <app-post-card></app-post-card>
-        </div>
-        <div class="col-md-4 mt-3">
-            <app-post-card></app-post-card>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <app-post-card></app-post-card>
-        </div>
+       
     </div>
 </section>
