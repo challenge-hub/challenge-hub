@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 mt-3" *ngFor= "let featuredPost of featuredPostsArray">
+            <div class="col-md-4 mt-3" style="display: flex; justify-content: center;" *ngFor= "let featuredPost of featuredPostsArray">
             <app-post-card [postData] = "featuredPost"></app-post-card>
         </div>
         </div>
